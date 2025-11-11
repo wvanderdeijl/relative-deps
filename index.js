@@ -211,11 +211,11 @@ function installRelativeDepsPackage() {
   let pkg = getPackageJson()
 
   if (!(
-    (pkg.devDependencies && pkg.devDependencies["relative-deps"]) ||
-    (pkg.dependencies && pkg.dependencies["relative-deps"])
+    (pkg.devDependencies && pkg.devDependencies["@wvanderdeijl/relative-deps"]) ||
+    (pkg.dependencies && pkg.dependencies["@wvanderdeijl/relative-deps"])
   )) {
-    console.log('[relative-deps] Installing relative-deps package')
-    spawn.sync(["add", "-D", "relative-deps"])
+    console.log('[relative-deps] Installing @wvanderdeijl/relative-deps package')
+    spawn.sync(["add", "-D", "@wvanderdeijl/relative-deps"])
   }
 }
 
