@@ -290,7 +290,7 @@ function setPackageData(pkgData) {
   const source = getPackageJson()
   fs.writeFileSync(
     path.join(process.cwd(), "package.json"),
-    JSON.stringify(merge(source, pkgData), null, 2)
+    JSON.stringify(merge(source, pkgData), null, 4)
   )
 }
 
