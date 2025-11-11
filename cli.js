@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 const yargs = require("yargs");
+const { hideBin } = require("yargs/helpers");
 const relativeDeps = require("./index");
 
-yargs
+yargs(hideBin(process.argv))
   .usage("Usage: $0 <command> [options]")
   .command({
     command: "*",
@@ -35,4 +36,4 @@ yargs
     description: "Script for relative-deps",
     default: "prepare",
     type: "string"
-  }).argv;
+  }).parse();

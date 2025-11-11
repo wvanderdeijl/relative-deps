@@ -1,7 +1,6 @@
 # relative-deps
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/michelweststrate)
-<a href="https://www.buymeacoffee.com/mweststrate" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 22px !important;width: auto !important;" ></a>
+This is a fork of [mweststrate/relative-deps](https://github.com/mweststrate/relative-deps) with updated dependencies.
 
 _Installs dependencies from a local checkout, and keeps them in sync, without the limitations of `link`_
 

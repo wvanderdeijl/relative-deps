@@ -1,9 +1,8 @@
 const path = require("path")
-const child_process = require("child_process")
 const fs = require("fs")
 const readPkgUp = require("read-pkg-up")
 const rimraf = require("rimraf")
-const globby = require("globby")
+const { globby } = require("globby")
 const checksum = require("checksum")
 const merge = require("lodash/merge")
 const debounce = require("lodash/debounce")
@@ -11,9 +10,9 @@ const { spawn } = require("yarn-or-npm")
 const tar = require("tar")
 
 async function installRelativeDeps() {
-  const projectPkgJson = readPkgUp.sync()
+  const projectPkgJson = readPkgUp.readPackageUpSync()
 
-  const relativeDependencies = projectPkgJson.package.relativeDependencies
+  const relativeDependencies = projectPkgJson.packageJson.relativeDependencies
 
   if (!relativeDependencies) {
     console.warn("[relative-deps][WARN] No 'relativeDependencies' specified in package.json")
@@ -28,8 +27,8 @@ async function installRelativeDeps() {
     console.log(`[relative-deps] Checking '${name}' in '${libDir}'`)
 
     const regularDep =
-      (projectPkgJson.package.dependencies && projectPkgJson.package.dependencies[name]) ||
-      (projectPkgJson.package.devDependencies && projectPkgJson.package.devDependencies[name])
+      (projectPkgJson.packageJson.dependencies && projectPkgJson.packageJson.dependencies[name]) ||
+      (projectPkgJson.packageJson.devDependencies && projectPkgJson.packageJson.devDependencies[name])
 
     if (!regularDep) {
       console.warn(`[relative-deps][WARN] The relative dependency '${name}' should also be added as normal- or dev-dependency`)
@@ -66,7 +65,7 @@ async function installRelativeDeps() {
 async function watchRelativeDeps() {
   const projectPkgJson = readPkgUp.sync()
 
-  const relativeDependencies = projectPkgJson.package.relativeDependencies
+  const relativeDependencies = projectPkgJson.packageJson.relativeDependencies
 
   if (!relativeDependencies) {
     console.warn("[relative-deps][WARN] No 'relativeDependencies' specified in package.json")
